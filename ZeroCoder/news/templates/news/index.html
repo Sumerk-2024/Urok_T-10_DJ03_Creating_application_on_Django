@@ -1,0 +1,16 @@
+{% extends "news/base.html" %}
+
+{% block title %}Новости{% endblock %}
+
+{% block content %}
+<h1 class="my-4">Новости</h1>
+<div class="list-group">
+    {% for news in news_posts %}
+    <a href="{% url 'detail' news.id %}" class="list-group-item list-group-item-action">
+        <h5 class="mb-1">{{ news.title }}</h5>
+        <p class="mb-1">{{ news.short_description }}</p>
+        <small class="text-muted">{{ news.pub_date }} | Автор: {{ news.author.username }}</small>
+    </a>
+    {% endfor %}
+</div>
+{% endblock %}
